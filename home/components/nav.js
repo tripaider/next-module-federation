@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 
 const links = [
   { href: 'https://zeit.co/now', label: 'ZEIT' },
@@ -8,6 +9,14 @@ const links = [
   link.key = `nav-link-${link.href}-${link.label}`;
   return link;
 });
+
+const RemoteMenu = dynamic(
+  () => {
+    return import('header/menu');
+  },
+  { ssr: false },
+);
+
 
 const Nav = () => (
   <nav>
@@ -25,6 +34,9 @@ const Nav = () => (
         <Link href="/checkout">
           Checkout
         </Link>
+        {/* <Link href="/header">
+          Header
+        </Link> */}
       </li>
       {links.map(({ key, href, label }) => (
         <li key={key}>
@@ -32,7 +44,7 @@ const Nav = () => (
         </li>
       ))}
     </ul>
-
+    <RemoteMenu />
     <style jsx>{`
       :global(body) {
         margin: 0;

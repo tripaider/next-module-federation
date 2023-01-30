@@ -45,7 +45,7 @@ export async function matchFederatedPage(path) {
     }
   }
 
-  console.log(config);
+  console.log(`config`, config);
 
   const matcher = createMatcher(config);
   const match = matcher(path);
@@ -112,7 +112,11 @@ export function createFederatedCatchAll() {
 
       console.log('loading exposed module', mod, 'from remote', remote);
       const container = await injectScript(remote);
-      const FederatedPage = await container.get(mod).then(factory => factory().default);
+      console.log('container', container)
+      const FederatedPage = await container.get(mod).then(factory => {
+        console.log('factory', factory)
+        return factory().default
+      });
       console.log('FederatedPage', FederatedPage);
       if (!FederatedPage) {
         // TODO: Run getInitialProps for 404 page

@@ -12,6 +12,13 @@ const RemoteTitle = dynamic(
   { ssr: false },
 );
 
+// const RemoteMenu = dynamic(
+//   () => {
+//     return import('header/menu');
+//   },
+//   { ssr: false },
+// );
+
 const Home = ({ loaded }) => {
   if (process.browser) {
     useCustomHook();
@@ -25,6 +32,7 @@ const Home = ({ loaded }) => {
 
       <div className="hero">
         <RemoteTitle />
+        {/* <RemoteMenu /> */}
         <h1 className="title">
           Welcome to Next.js on Webpack 5! <code>home</code>
         </h1>
