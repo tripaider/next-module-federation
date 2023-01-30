@@ -9,8 +9,8 @@
   ],
   "scripts": {
     "dev": "concurrently \"npm --prefix checkout run dev\" \"npm --prefix home run dev\" \"npm --prefix shop run dev\" \"npm --prefix header run dev\"",
-    "build": "concurrently \"npm --prefix checkout run build\" \"npm --prefix home run build\" \"npm --prefix shop run build\" \"npm --prefix header run build\"",
-    "start": "concurrently \"npm --prefix checkout run start\" \"npm --prefix home run start\" \"npm --prefix shop run start\" \"npm --prefix header run start\""
+    "build": "concurrently \"cd checkout; npm run build\" \"cd home; npm run build\" \"cd shop; npm run build\" \"cd header; npm run build\"",
+    "start": "concurrently \"cd checkout; npm run start\" \"cd home; npm run start\" \"cd shop; npm run start\" \"cd header; npm run start\""
   },
   "dependencies": {
     "axios": "^1.2.3",
